@@ -11,7 +11,7 @@ int MulFactor[4][4] = { {0x02, 0x03, 0x01, 0x01},
 int MulFactor_1[4][4] = { {0x0E, 0x0B, 0x0D, 0x09},
                          {0x09, 0x0E, 0x0B, 0x0D},
                          {0x0D, 0x09, 0x0E, 0x0B},
-                         {0x0B, 0x0D, 0x09, 0x0E} };//½âÃÜÊ¹ÓÃ
+                         {0x0B, 0x0D, 0x09, 0x0E} };//è§£å¯†ä½¿ç”¨
 
 int S[16][16] = { {0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76},
                  {0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0},
@@ -46,7 +46,7 @@ int S_1[16][16] = { {0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40,
                    {0x60, 0x51, 0x7f, 0xa9, 0x19, 0xb5, 0x4a, 0x0d, 0x2d, 0xe5, 0x7a, 0x9f, 0x93, 0xc9, 0x9c, 0xef},
                    {0xa0, 0xe0, 0x3b, 0x4d, 0xae, 0x2a, 0xf5, 0xb0, 0xc8, 0xeb, 0xbb, 0x3c, 0x83, 0x53, 0x99, 0x61},
                    {0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d}
-};//½âÃÜÊ¹ÓÃ
+};//è§£å¯†ä½¿ç”¨
 
 int RCon[11][4] = {
         {0x00, 0x00, 0x00, 0x00},
@@ -62,12 +62,12 @@ int RCon[11][4] = {
         {0x36, 0x00, 0x00, 0x00} };
 
 void meau() {
-    printf("=========AES¼ÓÃÜËã·¨=========\n");
-    printf("1.ZeroÌî³ä\n");
-    printf("2.X923Ìî³ä\n");
-    printf("3.PKCS7Ìî³ä\n");
-    printf("4.ISO10126Ìî³ä\n");
-    printf("0.ÍË³ö³ÌĞò\n");
+    printf("=========AESåŠ å¯†ç®—æ³•=========\n");
+    printf("1.Zeroå¡«å……\n");
+    printf("2.X923å¡«å……\n");
+    printf("3.PKCS7å¡«å……\n");
+    printf("4.ISO10126å¡«å……\n");
+    printf("0.é€€å‡ºç¨‹åº\n");
 }
 char* Zero(char* plaintext) {
     int  i, j, k;
@@ -79,7 +79,7 @@ char* Zero(char* plaintext) {
             plaintext[n] = '0x00';
         }
     }
-    printf("ZeroÄ£Ê½ÏÂÌî³äµÄÃ÷ÎÄÎª%s\n", plaintext);
+    printf("Zeroæ¨¡å¼ä¸‹å¡«å……çš„æ˜æ–‡ä¸º%s\n", plaintext);
     return plaintext;
 }
 char* PKCS7(char* plaintext) {
@@ -92,7 +92,7 @@ char* PKCS7(char* plaintext) {
             plaintext[n] = m;
         }
     }
-    printf("PKCS7Ä£Ê½ÏÂÌî³äµÄÃ÷ÎÄÎª%s\n", plaintext);
+    printf("PKCS7æ¨¡å¼ä¸‹å¡«å……çš„æ˜æ–‡ä¸º%s\n", plaintext);
     return plaintext;
 }
 char* X923(char* plaintext) {
@@ -106,7 +106,7 @@ char* X923(char* plaintext) {
         }
         plaintext[j * 16 + 16 - 1] = 16 - k;
     }
-    printf("X923Ä£Ê½ÏÂÌî³äµÄÃ÷ÎÄÎª%s\n", plaintext);
+    printf("X923æ¨¡å¼ä¸‹å¡«å……çš„æ˜æ–‡ä¸º%s\n", plaintext);
     return plaintext;
 }
 char* ISO10126(char* plaintext) {
@@ -121,7 +121,7 @@ char* ISO10126(char* plaintext) {
         }
         plaintext[j * 16 + 16 - 1] = 16 - k;
     }
-    printf("ISO10126Ä£Ê½ÏÂÌî³äµÄÃ÷ÎÄÎª%s\n", plaintext);
+    printf("ISO10126æ¨¡å¼ä¸‹å¡«å……çš„æ˜æ–‡ä¸º%s\n", plaintext);
     return plaintext;
 }
 int** changekey(char key[]) {
@@ -132,8 +132,8 @@ int** changekey(char key[]) {
         W[i] = (int*)malloc(sizeof(int) * 44);
         memset(W[i], 0, sizeof(int) * 44);
     }
-    printf("========ÕıÔÚ²úÉú×ÓÃÜÔ¿======\n");
-    printf("======Íê³É¾ØÕó»¯µÄ¾ØÕóÎª======\n");
+    printf("========æ­£åœ¨äº§ç”Ÿå­å¯†é’¥======\n");
+    printf("======å®ŒæˆçŸ©é˜µåŒ–çš„çŸ©é˜µä¸º======\n");
     for (int i = 0, j = 0; i < 4; i++) {
         for (; j < 4; j++) {
             printf(" %X ", key[i + 4 * j]);
@@ -141,9 +141,9 @@ int** changekey(char key[]) {
         j = 0;
         printf("\n");
     }
-    int row = 0;//ĞĞ
-    int col = 0;//ÁĞ
-    int m, n;//¸ßÎ»£¬µÍÎ»
+    int row = 0;//è¡Œ
+    int col = 0;//åˆ—
+    int m, n;//é«˜ä½ï¼Œä½ä½
     int x;
     for (; col < 4; col++) {
         for (; row < 4; row++) {
@@ -172,9 +172,9 @@ int** changekey(char key[]) {
             }
         }
     }
-    printf("========²úÉúµÄ10ÂÖ×ÓÃÜÔ¿============\n");
+    printf("========äº§ç”Ÿçš„10è½®å­å¯†é’¥============\n");
     for (int k = 0, i = 0, j = 4; k < 10; k++) {
-        printf("µÚ%2dÂÖ×ÓÃÜÔ¿ÊÇ£º", k + 1);
+        printf("ç¬¬%2dè½®å­å¯†é’¥æ˜¯ï¼š", k + 1);
         for (int l = j + 4; j < l; j++) {
             for (; i < 4; i++) {
                 printf(" %02X ", W[i][j]);
@@ -194,7 +194,7 @@ int** AddRounKey_0(int** plaintext_0, int** W, int length, int i) {
             }
         }
     }
-    printf("======Íê³ÉAddRounKey±ä»»µÄ¾ØÕóÎª£º===========\n");
+    printf("======å®ŒæˆAddRounKeyå˜æ¢çš„çŸ©é˜µä¸ºï¼š===========\n");
     for (int m = 0; m < 4; m++) {
         for (int n = 0; n < length; n++) {
             printf(" %02X ", plaintext_0[m][n]);
@@ -212,7 +212,7 @@ int** SubBytes(int** plaintext_0, int length,int time) {
             plaintext_0[i][j] = S[m][n];
         }
     }
-    printf("======Íê³ÉSubBytes±ä»»µÄ¾ØÕóÎª£º===========\n");
+    printf("======å®ŒæˆSubByteså˜æ¢çš„çŸ©é˜µä¸ºï¼š===========\n");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < length; j++) {
             printf(" %02X ", plaintext_0[i][j]);
@@ -245,7 +245,7 @@ int** ShiftRows(int** plaintext_0, int length,int time) {
             plaintext_0[i][j] = plaintext_1[i][j];
         }
     }
-    printf("======Íê³ÉShiftRows±ä»»µÄ¾ØÕóÎª£º===========\n");
+    printf("======å®ŒæˆShiftRowså˜æ¢çš„çŸ©é˜µä¸ºï¼š===========\n");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < length; j++) {
             printf(" %02X ", plaintext_0[i][j]);
@@ -267,7 +267,7 @@ int** MixColumns(int** plaintext_0, int length,int time) {
     }
 
     for (int k = (time); k < ((time +1)); k++) {
-        for (int i = 0; i < 4; i++) {  //iĞĞjÁĞ
+        for (int i = 0; i < 4; i++) {  //iè¡Œjåˆ—
             for (int j = 0, sum = 0; j < 4; j++) {
                 for (int l = 0; l < 4; l++) {
                     if (MulFactor[i][l] == 1) {
@@ -313,7 +313,7 @@ int** MixColumns(int** plaintext_0, int length,int time) {
         }
 
     }
-    printf("======Íê³ÉMixColumns±ä»»µÄ¾ØÕóÎª£º===========\n");
+    printf("======å®ŒæˆMixColumnså˜æ¢çš„çŸ©é˜µä¸ºï¼š===========\n");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < length; j++) {
             printf(" %02X ", plaintext_0[i][j]);
@@ -331,7 +331,7 @@ int** AddRounKey(int** plaintext_0, int** W, int length, int i,int time) {
             }
         }
     }
-    printf("======Íê³ÉAddRounKey±ä»»µÄ¾ØÕóÎª£º===========\n");
+    printf("======å®ŒæˆAddRounKeyå˜æ¢çš„çŸ©é˜µä¸ºï¼š===========\n");
     for (int m = 0; m < 4; m++) {
         for (int n = 0; n < length; n++) {
             printf(" %02X ", plaintext_0[m][n]);
@@ -341,7 +341,7 @@ int** AddRounKey(int** plaintext_0, int** W, int length, int i,int time) {
     return plaintext_0;
 }
 int** jiami_0(int** plaintext_0, int** W, char* plaintext,int i) {
-    printf("¿ªÊ¼µÚ%dÂÖ¼ÓÃÜ=====¡·\n", i + 1);
+    printf("å¼€å§‹ç¬¬%dè½®åŠ å¯†=====ã€‹\n", i + 1);
     for (int time = 0; time < (strlen(plaintext) / 16); time++) {
         SubBytes(plaintext_0, (strlen(plaintext) / 4),time);
         ShiftRows(plaintext_0, (strlen(plaintext) / 4),time);
@@ -360,7 +360,7 @@ int** jiami(char* plaintext, int** W, int length) {
         plaintext_0[i] = (int*)malloc(sizeof(int) * (strlen(plaintext) / 4));
         memset(plaintext_0[i], 0, sizeof(int) * (strlen(plaintext) / 4));
     }
-    printf("=========Íê³É¾ØÕó»¯µÄ¾ØÕóÎª£º=========\n");
+    printf("=========å®ŒæˆçŸ©é˜µåŒ–çš„çŸ©é˜µä¸ºï¼š=========\n");
     for (int i = 0, j = 0; i < 4; i++) {
         for (; j < (strlen(plaintext) / 4); j++) {
             printf(" %02X ", plaintext[i + 4 * j]);
@@ -369,24 +369,24 @@ int** jiami(char* plaintext, int** W, int length) {
         j = 0;
         printf("\n");
     }
-    printf("¶ÔÃ÷ÎÄ½øĞĞ³õÊ¼±ä»»£º\n");
+    printf("å¯¹æ˜æ–‡è¿›è¡Œåˆå§‹å˜æ¢ï¼š\n");
     AddRounKey_0(plaintext_0, W, (strlen(plaintext) / 4), 0);
     for (int i = 0; i < 10; i++) {
         jiami_0(plaintext_0, W, plaintext, i);
     }
     
 
-    printf("Ã÷ÎÄÊÇ£º");
+    printf("æ˜æ–‡æ˜¯ï¼š");
     for (int i = 0; i < length; i++) {
         printf("%c", plaintext[i]);
     }
-    printf("\nÃÜÔ¿ÊÇ£º");
+    printf("\nå¯†é’¥æ˜¯ï¼š");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             printf("%c", W[j][i]);
         }
     }
-    printf("\nAESµÄ¼ÓÃÜ½á¹ûÊÇ£º");
+    printf("\nAESçš„åŠ å¯†ç»“æœæ˜¯ï¼š");
     for (int j = 0; j < (strlen(plaintext) / 4); j++) {
         for (int i = 0; i < 4; i++) {
             printf(" %02X ", plaintext_0[i][j]);
@@ -398,29 +398,29 @@ int** jiami(char* plaintext, int** W, int length) {
 int main() {
     int index = 1;
     char key[16];
-    char plaintext[120];  //Ã÷ÎÄ
-    char ciphetext[120];  //ÃÜÎÄ
+    char plaintext[120];  //æ˜æ–‡
+    char ciphetext[120];  //å¯†æ–‡
     int** W = NULL;
     int length;
     while (1) {
         meau();
-        printf("ÇëÑ¡ÔñÃ÷ÎÄÌî³ä·½Ê½£º");
+        printf("è¯·é€‰æ‹©æ˜æ–‡å¡«å……æ–¹å¼ï¼š");
         scanf("%d", &index);
         getchar();
         switch (index) {
         case 1:
             memset(plaintext,0,sizeof(char)*120);
             memset(key, 0, sizeof(char) * 16);
-            printf("ÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+            printf("è¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
             gets(key);
             while (strlen(key) != 16) {
-                printf("ÄúËùÊäÈëµÄÃÜÔ¿²»ÊÇ16×Ö½Ú£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„å¯†é’¥ä¸æ˜¯16å­—èŠ‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
                 gets(key);
             }
-            printf("ÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+            printf("è¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
             gets(plaintext);
             while (strlen(plaintext) > 100) {
-                printf("ÄúËùÊäÈëµÄÃ÷ÎÄ²»·ûºÏÒªÇó£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„æ˜æ–‡ä¸ç¬¦åˆè¦æ±‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
                 gets(plaintext);
                 
             }length = strlen(plaintext);
@@ -432,16 +432,16 @@ int main() {
         case 2:
             memset(plaintext, 0, sizeof(char) * 120);
             memset(key, 0, sizeof(char) * 16);
-            printf("ÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+            printf("è¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
             gets(key);
             while (strlen(key) != 16) {
-                printf("ÄúËùÊäÈëµÄÃÜÔ¿²»ÊÇ16×Ö½Ú£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„å¯†é’¥ä¸æ˜¯16å­—èŠ‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
                 gets(key);
             }
-            printf("ÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+            printf("è¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
             gets(plaintext);
             while (strlen(plaintext) > 100) {
-                printf("ÄúËùÊäÈëµÄÃ÷ÎÄ²»·ûºÏÒªÇó£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„æ˜æ–‡ä¸ç¬¦åˆè¦æ±‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
                 gets(plaintext);
                 
             }length = strlen(plaintext);
@@ -453,16 +453,16 @@ int main() {
         case 3:
             memset(plaintext, 0, sizeof(char) * 120);
             memset(key, 0, sizeof(char) * 16);
-            printf("ÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+            printf("è¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
             gets(key);
             while (strlen(key) != 16) {
-                printf("ÄúËùÊäÈëµÄÃÜÔ¿²»ÊÇ16×Ö½Ú£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„å¯†é’¥ä¸æ˜¯16å­—èŠ‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
                 gets(key);
             }
-            printf("ÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+            printf("è¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
             gets(plaintext);
             while (strlen(plaintext) > 100) {
-                printf("ÄúËùÊäÈëµÄÃ÷ÎÄ²»·ûºÏÒªÇó£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„æ˜æ–‡ä¸ç¬¦åˆè¦æ±‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
                 gets(plaintext);
                 
             }length = strlen(plaintext);
@@ -474,16 +474,16 @@ int main() {
         case 4:
             memset(plaintext, 0, sizeof(char) * 120);
             memset(key, 0, sizeof(char) * 16);
-            printf("ÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+            printf("è¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
             gets(key);
             while (strlen(key) != 16) {
-                printf("ÄúËùÊäÈëµÄÃÜÔ¿²»ÊÇ16×Ö½Ú£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈë16Î»µÄÃÜÔ¿£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„å¯†é’¥ä¸æ˜¯16å­—èŠ‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥16ä½çš„å¯†é’¥ï¼š");
                 gets(key);
             }
-            printf("ÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+            printf("è¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
             gets(plaintext);
             while (strlen(plaintext) > 100) {
-                printf("ÄúËùÊäÈëµÄÃ÷ÎÄ²»·ûºÏÒªÇó£¬ÇëÖØĞÂÊäÈë£¡\nÇëÊäÈëÃ÷ÎÄ£¬£¨²»³¬¹ı100×Ö½Ú)£º");
+                printf("æ‚¨æ‰€è¾“å…¥çš„æ˜æ–‡ä¸ç¬¦åˆè¦æ±‚ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\nè¯·è¾“å…¥æ˜æ–‡ï¼Œï¼ˆä¸è¶…è¿‡100å­—èŠ‚)ï¼š");
                 gets(plaintext);
                 
             }length = strlen(plaintext);
